@@ -35,6 +35,11 @@ public class Twitter extends QwoBotPlugin {
 
         final twitter4j.Twitter twitter = TwitterFactory.getSingleton();
         final String twitterHandle = params.get(1);
+        
+        // Chop off @ character at the beginning of usernames if present 
+        if (twitterHandle.startsWith("@") && twitterHandle.length() > 1) {
+            twitterHandle = twitterHandle.substring(1);
+        }
 
         long twitterId;
         try {
